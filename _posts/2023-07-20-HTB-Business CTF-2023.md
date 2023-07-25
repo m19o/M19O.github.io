@@ -1,6 +1,6 @@
 ---
 published: true
-title: HacktheBox BusinessCTF 2023
+title: HTB Business CTF 2023
 date: 2023-07-20 04:11:00 +0200
 categories: [CTF]
 tags: CTF
