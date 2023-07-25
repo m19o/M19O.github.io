@@ -5,8 +5,6 @@ date: 2023-07-20 04:11:00 +0200
 categories: [CTF]
 tags: CTF
 ---
-# HackTheBox Business CTF 2023
-
 TL:DR Hello Folks, I will share my writeup for the Scada Challenge. I hope you enjoy and benefit from the blog post.
 
 
