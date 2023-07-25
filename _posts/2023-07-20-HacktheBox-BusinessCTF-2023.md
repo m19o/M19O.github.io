@@ -8,6 +8,7 @@ tags: CTF
 # HackTheBox Business CTF 2023
 
 TL:DR Hello Folks, I will share my writeup for the Scada Challenge. I hope you enjoy and benefit from the blog post.
+<img src="https://i.ibb.co/wQpyJvY/6a0133f264aa62970b0282e1497ddf200b-800wi.png" alt="6a0133f264aa62970b0282e1497ddf200b-800wi" border="0">
 
 # WatchTower
 
