@@ -35,7 +35,7 @@ Let`s start checking
 After some search i found out that we can have a reverse shell by uploading it to manager page
 </blockquote> 
   
-<h1>Exploitation<h1> 
+# Exploitation
 <img src="https://i.ibb.co/GHydR91/To-Create-Payload-and-upload-it-3.png" alt="To-Create-Payload-and-upload-it-3" border="0">
 <blockquote>  
 ِAfte uploading our shell let`s execute it.  
@@ -53,7 +53,7 @@ Let`s crack it with FCRACKZIP
   
 <img src="https://i.ibb.co/XLQ7F1p/Crack-Backup-Zip-File.png" alt="Crack-Backup-Zip-File" border="0">  
 
-<h1>Privilege Escalation<h1>  
+# Privilege Escalation
 <blockquote>
 I didn`t find anything interesting in the file , In the recon phase i found ash user so i tried the password on it  
 </blockquote>  
