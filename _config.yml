@@ -18,9 +18,9 @@ timezone: Africa/Egypt
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: Security Bl0g      # the main title
+title: TERMINATOR      # the main title
 
-tagline: Security Blog   # it will display as the sub-title
+tagline: Hacker and security researcher   # it will display as the sub-title
 
 description: >-       # used by seo meta and the atom feed
   Security blog contains diffreent topics in Red/Blue team.
@@ -53,7 +53,7 @@ google_site_verification: google_meta_tag_verification # change to your verifica
 
 
 google_analytics:
-  id: ''              # fill in your Google Analytics ID
+  id: 'G-BFSTXSS2ZP'              # fill in your Google Analytics ID
   # Google Analytics pageviews report settings
   pv:
     proxy_endpoint:   # fill in the Google Analytics superProxy endpoint of Google App Engine
