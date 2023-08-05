@@ -18,12 +18,12 @@ timezone: Africa/Egypt
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: m19o      # the main title
+title: TERMINATOR      # the main title
 
 tagline: Security Blog   # it will display as the sub-title
 
 description: >-       # used by seo meta and the atom feed
-  Security blog contains writeup for hackthebox machines and publications.
+  Security blog contains diffreent topics in Red/Blue team.
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
 url: 'https://M19O.github.io'
