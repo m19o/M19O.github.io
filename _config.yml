@@ -18,7 +18,7 @@ timezone: Africa/Egypt
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: m19o      # the main title
+title: m19o - أبومسلم     # the main title
 
 tagline: Hacker and security researcher   # it will display as the sub-title
 
@@ -37,7 +37,7 @@ twitter:
 social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
-  name: Mohamed Magdy Abumuslim
+  name: Mohamed Magdy Abumuslim - أبومسلم
   email: MohamedMagdyAbuMuslim@gmail.com # change to your email address
   links:
     # The first element serves as the copyright owner's link
