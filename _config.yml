@@ -18,31 +18,31 @@ timezone: Africa/Egypt
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: m19o - أبومسلم     # the main title
+title: Islam Essam     # the main title
 
-tagline: Hacker and security researcher   # it will display as the sub-title
+tagline: Malware Analyst & Reverse Engineer   # it will display as the sub-title
 
 description: >-       # used by seo meta and the atom feed
   Security blog contains diffreent topics in Red/Blue team.
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
-url: 'https://M19O.github.io'
+url: 'https://Hunter.github.io'
 
 github:
-  username: m19o             # change to your github username
+  username: Mal-X-Hunter             # change to your github username
 
 twitter:
-  username: m19o__            # change to your twitter username
+  username: Islam11Essam            # change to your twitter username
 
 social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
-  name: Mohamed Magdy Abumuslim - أبومسلم
-  email: MohamedMagdyAbuMuslim@gmail.com # change to your email address
+  name: Islam Essam
+  email: islamessam459@gmail.com # change to your email address
   links:
     # The first element serves as the copyright owner's link
-    - https://twitter.com/m19o__      # change to your twitter homepage
-    - https://github.com/m19o       # change to your github homepage
+    - https://twitter.com/Islam11Essam      # change to your twitter homepage
+    - https://github.com/Mal-X-Hunter       # change to your github homepage
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
     # - https://www.linkedin.com/in/username
@@ -53,7 +53,7 @@ google_site_verification: google_meta_tag_verification # change to your verifica
 
 
 google_analytics:
-  id: 'G-BFSTXSS2ZP'              # fill in your Google Analytics ID
+  id: ''              # fill in your Google Analytics ID
   # Google Analytics pageviews report settings
   pv:
     proxy_endpoint:   # fill in the Google Analytics superProxy endpoint of Google App Engine
@@ -80,7 +80,7 @@ theme_mode:   # [light|dark]
 img_cdn:
 
 # the avatar on sidebar, support local or CORS resources
-avatar: https://avatars.githubusercontent.com/u/71312369?v=4
+avatar: https://pbs.twimg.com/media/Dm0XZIFUwAE63g1.jpg
 
 # boolean type, the global switch for ToC in posts.
 toc: true
