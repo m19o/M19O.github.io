@@ -45,6 +45,7 @@ AWS CloudTrail is an AWS service that helps you enable operational and risk audi
 ## Abuse 1.1 :
 
 Delete-channel permission  
+> You can delete a channel between cloudtrail and crowdstrike falcon for example.
 
 - aws cloudtrail delete-channel --channel arn:aws:cloudtrail:eu-north-1:036528129738:channel/3d5f7c83-5146-4ea5-8e62-7250313f9e26 --profile Cloudtrail
 
