@@ -112,7 +112,7 @@ Put-Insight-selector permission
 
 <img src="https://i.ibb.co/jV9WT5P/9.png" alt="9" border="0">
 
-1. This request can be done with the CLi all you need is the cookies to send it authenticated
+2. This request can be done with the CLi all you need is the cookies.
 
 <img src="https://i.ibb.co/S0M5BmT/10.png" alt="10" border="0">
 
