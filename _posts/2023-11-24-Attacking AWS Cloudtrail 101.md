@@ -5,7 +5,7 @@ published: false
 
 # Introduction
 
-I was inspired by @(https://twitter.com/Frichette_n)https://twitter.com/Frichette_n research about Cloudtrail bypasses and I didn’t find any material or talks discussing how we can attack Cloudtrail. 
+I was inspired by @[Frichette_n](https://twitter.com/Frichette_n) research about Cloudtrail bypasses and I didn’t find any material or talks discussing how we can attack Cloudtrail. 
 
 I presented this research @[BsidesABQ](https://twitter.com/BSides_ABQ)
 
