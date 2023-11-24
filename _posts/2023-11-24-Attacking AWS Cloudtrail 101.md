@@ -26,9 +26,6 @@ Since logging is one of our enemies in red team operations, I decided to do my r
     2. Stop data logging 
 3. Insights events
     1. Disabling Insights events 
-4. Organization Delegated Admin
-    1. DeRegister organization admin 
-    2. Register organization admin 
 
 # What is Cloudtrail?
 
