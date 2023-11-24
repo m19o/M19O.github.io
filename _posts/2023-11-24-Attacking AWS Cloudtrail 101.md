@@ -6,8 +6,6 @@ categories: [Research]
 tags: Cloud
 ---
 
-# Attacking AWS Cloudtrail 101
-
 # Introduction
 
 I was inspired by @[Frichette_n](https://twitter.com/Frichette_n) research about Cloudtrail bypasses and I didn’t find any material or talks discussing how we can attack Cloudtrail. 
