@@ -20,7 +20,7 @@ Since logging is one of our enemies in red team operations, I decided to do my r
 
 1. Service-link Channels
     1. Deleting Channels 
-    2. Log pensioning 
+    2. Log poisoning  
 2. Event data stores
     1. Deleting stored data 
     2. Stop data logging 
