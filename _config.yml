@@ -33,6 +33,8 @@ github:
 
 twitter:
   username: m19o__            # change to your twitter username
+Mastadon: 
+  username: m19o
 
 social:
   # Change to your full name.
@@ -43,6 +45,7 @@ social:
     # The first element serves as the copyright owner's link
     - https://twitter.com/m19o__      # change to your twitter homepage
     - https://github.com/m19o       # change to your github homepage
+    - https://infosec.exchange/@m19o
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
     # - https://www.linkedin.com/in/username
