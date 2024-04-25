@@ -3,7 +3,7 @@ published: True
 title: How i found my first 0day 
 date: 2021-11-26 14:56:00 +0200
 categories: [Publications]
-tags: Publications SecurityResearching
+tags: Publications SecurityResearch
 ---
 
 
