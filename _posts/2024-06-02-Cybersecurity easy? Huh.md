@@ -1,6 +1,6 @@
 ---
 published: true
-title: Cybersecurity easy? Huh.
+title: Cybersecurity easy? Huh
 date: 2024-06-02 04:15:00 +0300
 tags: CTF
 ---
