@@ -23,6 +23,8 @@ Most hacking relies on trial and error to understand what happens behind the sce
 
 To start, I sent a **normal email** to observe how the system processes and summarizes my message:
 
+>DISCLIMER: This debugging is a simulation to understand what happens in the background but Prompt_Shield doesn't offer that feature. 
+
 ```bash
 Hello Team,
 I wanted to summarize this email
