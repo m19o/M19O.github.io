@@ -1,22 +1,25 @@
 ---
 published: true
-title: Phish the LLM: Hacking Email Summarizers
-date: 2025-03-08 05:10:00 +0200
+title: "Phishing LLMs: Hacking email summarizers"
+description: "Phishing LLMs with prompt injections"
+keywords: "phishing LLMs, prompt injection, CTF, LLM security, email summarizer hack"
+date: 2025-03-08
 categories: [LLM]
-tags: LLM
+Tag: LLM
 ---
+<h1>Phishing LLMs is a thing, and I'm here to mess with email summarizers specifically</h1>
 
 Phishing LLMs is a thing, and I'm here to mess with email summarizers specifically. Call it AI red teaming, adversarial ML, or social engineering. I don’t care.
 
 I Jumped in the LLMail-inject CTF hosted by MSRC. So here is the story.
 
-# Narrative
+<h2>Narrative</h2>
 
 This picture shows a simplified view of how prompts flow through the application that handles communication between you and the model. In this challenge, they used [Prompt_shield](https://github.com/Azure-Samples/AzureAIContentSafety), so I replicated the entire setup on my machine.
 
 <img src="https://i.ibb.co/jPvhvhmY/Narritave.jpg" alt="Narritave" border="0">
 
-## Trial and Error
+<h2>Trial and Error</h2>
 
 Most hacking relies on trial and error to understand what happens behind the scenes when you type commands, send requests, create files, or delete files .. etc
 
@@ -98,7 +101,7 @@ Blocked. Even with my NOC Lead swagger, Prompt Shield wasn’t impressed. **Debu
 
 That `@` tripped the alarm. Game on.
 
-### How the Classifiers works
+<h3>How the Classifiers works</h3>
 
 LLM apps lean on classifiers to detect and block prompt injections. input and output stages. Think of it as the bouncer checking your ID. **Here’s how it thinks**:
 
@@ -122,7 +125,7 @@ The classifier’s got a risk scale for directives, how likely is this prompt tr
 
 My first email? Directive 0.88 high, but risk score 0.03 sailed under the 0.75 threshold. The spicy one? Directive 0.9, risk 0.53 still blocked. Why? That `@` screamed “email pattern” (confidence 0.94). Probably regex or maybe it normalizes input first, so encoding tricks like `@` don’t even get a chance.
 
-## More Trial, More Error
+<h2>More Trial, More Error</h2>
 
 The @ was blocked so what came into my mind is encoding, **Here**: 
 
@@ -163,19 +166,19 @@ All ✓
 
 Risk score 0.01? It let it through! Classifier must’ve snoozed.
 
-<img src="https://i.ibb.co/QzxrVRZ/Who-Decidedpng.png" alt="Who-Decidedpng" border="0">
+<img src="https://i.ibb.co/QzxrVRZ/Who-Decidedpng.png" alt="Prompt Shield Risk Score Surprise" border="0">
 
-# Challenge
+<h1>Challenge</h1>
 
 Back to the CTF. First shot malicious email:
 
-<img src="https://i.ibb.co/Gfq3LDL2/2.png" alt="2" border="0">
+<img src="https://i.ibb.co/Gfq3LDL2/2.png" alt="Malicious Email Blocked in CTF" border="0">
 
 The second email I sent looked like it worked. it should have sent an email to contact@contact.com. Here, I used indirect phrasing by embedding the command in a way that doesn’t appear explicit. However, that didn’t solve the challenge.
 
-<img src="https://i.ibb.co/XPyyHYp/3.png" alt="3" border="0">
+<img src="https://i.ibb.co/XPyyHYp/3.png" alt="Indirect Phrasing Attempt in CTF" border="0">
 
-## Solution
+<h2>Solution</h2>
 
 I tried to use encoding but didn’t work, there is two reasons came into my mind:
 
@@ -184,9 +187,9 @@ I tried to use encoding but didn’t work, there is two reasons came into my min
 
 When my trick failed, I explored another approaches and one of them is “flooding the input”, Guess what? it worked.
 
-<img src="https://i.ibb.co/gMDFCVxT/4.png" alt="4" border="0">
+<img src="https://i.ibb.co/gMDFCVxT/4.png" alt="Flooding Success in CTF" border="0">
 
- <h2>Why Flooding Worked</h2>
+<h2>Why Flooding Worked</h2>
 
 - Many LLMs **truncate inputs at a fixed token limit**, so security filters may have only checked the beginning of the input.
 - If a model **prioritizes recent tokens**, flooding with redundant text could push malicious content into a low-priority area.
