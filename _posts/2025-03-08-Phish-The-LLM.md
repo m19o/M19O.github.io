@@ -166,7 +166,7 @@ Risk score 0.01? It let it through! Classifier must’ve snoozed.
 
 <img src="https://i.ibb.co/QzxrVRZ/Who-Decidedpng.png" alt="Who-Decidedpng" border="0">
 
-# Challenge
+<h1>Challenge</h1>
 
 Back to the CTF. First shot malicious email:
 
@@ -176,7 +176,7 @@ The second email I sent looked like it worked. it should have sent an email to c
 
 <img src="https://i.ibb.co/XPyyHYp/3.png" alt="3" border="0">
 
-# Solution
+<h2>Solution</h2>
 
 I tried to use encoding but didn’t work, there is two reasons came into my mind:
 
@@ -187,12 +187,12 @@ When my trick failed, I explored another approaches and one of them is “floodi
 
 <img src="https://i.ibb.co/gMDFCVxT/4.png" alt="4" border="0">
 
-## **Why Flooding Worked**
+ <h2>Why Flooding Worked</h2>
 
 - Many LLMs **truncate inputs at a fixed token limit**, so security filters may have only checked the beginning of the input.
 - If a model **prioritizes recent tokens**, flooding with redundant text could push malicious content into a low-priority area.
 - Some models **treat excessive repetition as noise**, leading to unintended behavior.
 
-# Conclusion
+<h1>Conclusion</h1>
 
 This experiment highlighted the **limitations of LLM-based defenses** and how attackers can manipulate summarization systems to evade detection.
