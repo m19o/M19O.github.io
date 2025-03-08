@@ -7,7 +7,6 @@ date: 2025-03-08
 categories: [LLM]
 Tag: LLM
 ---
-<h1>Phishing LLMs is a thing, and I'm here to mess with email summarizers specifically</h1>
 
 Phishing LLMs is a thing, and I'm here to mess with email summarizers specifically. Call it AI red teaming, adversarial ML, or social engineering. I don’t care.
 
