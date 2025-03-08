@@ -7,7 +7,7 @@ tags: LLM
 
 ---
 
-Phishing LLMs is a thing, and I'm here to mess with email summarizers specifically. Call it AI red teaming, adversarial ML, or social engineering. I don’t care ^_^
+Phishing LLMs is a thing, and I'm here to mess with email summarizers specifically. Call it AI red teaming, adversarial ML, or social engineering. I don’t care.
 
 I Jumped in the LLMail-inject CTF hosted by MSRC. So here is the story.
 
