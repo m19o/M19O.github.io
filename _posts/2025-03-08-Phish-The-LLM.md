@@ -176,7 +176,7 @@ The second email I sent looked like it worked. it should have sent an email to c
 
 <img src="https://i.ibb.co/XPyyHYp/3.png" alt="3" border="0">
 
-## Solution
+# Solution
 
 I tried to use encoding but didn’t work, there is two reasons came into my mind:
 
