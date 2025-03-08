@@ -125,7 +125,7 @@ The classifier’s got a risk scale for directives, how likely is this prompt tr
 
 My first email? Directive 0.88 high, but risk score 0.03 sailed under the 0.75 threshold. The spicy one? Directive 0.9, risk 0.53 still blocked. Why? That `@` screamed “email pattern” (confidence 0.94). Probably regex or maybe it normalizes input first, so encoding tricks like `@` don’t even get a chance.
 
-<h2>More Trial, More Error</h2>
+<h3>More Trial, More Error</h3>
 
 The @ was blocked so what came into my mind is encoding, **Here**: 
 
