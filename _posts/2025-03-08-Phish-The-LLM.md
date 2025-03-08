@@ -172,11 +172,6 @@ Back to the CTF. First shot malicious email:
 
 The second email I sent looked like it worked. it should have sent an email to contact@contact.com. Here, I used indirect phrasing by embedding the command in a way that doesn’t appear explicit. However, that didn’t solve the challenge.
 
-### Why Encoding Failed
-
-- The security system likely **normalizes input before classification**, meaning encoded characters like `&#64;` are converted back to `@` before filtering.
-- Some systems employ **regular expressions with pre-processing steps**, allowing them to detect hidden patterns despite encoding attempts.
-
 <img src="https://i.ibb.co/XPyyHYp/3.png" alt="3" border="0">
 
 ## Solution
