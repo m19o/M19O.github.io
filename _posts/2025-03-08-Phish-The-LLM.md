@@ -1,6 +1,6 @@
 ---
 published: true
-title: Phish The LLM
+title: Phish the LLM: Hacking Email Summarizers
 date: 2025-03-08 05:10:00 +0200
 categories: [LLM]
 tags: LLM
