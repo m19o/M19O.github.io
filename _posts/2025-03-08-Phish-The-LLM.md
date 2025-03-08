@@ -4,7 +4,6 @@ title: Phish The LLM
 date: 2025-03-08 05:10:00 +0200
 categories: [LLM]
 tags: LLM
-
 ---
 
 Phishing LLMs is a thing, and I'm here to mess with email summarizers specifically. Call it AI red teaming, adversarial ML, or social engineering. I don’t care.
