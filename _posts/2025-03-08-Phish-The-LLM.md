@@ -123,7 +123,7 @@ The classifier’s got a risk scale for directives, how likely is this prompt tr
 
 My first email? Directive 0.88 high, but risk score 0.03 sailed under the 0.75 threshold. The spicy one? Directive 0.9, risk 0.53 still blocked. Why? That `@` screamed “email pattern” (confidence 0.94). Probably regex or maybe it normalizes input first, so encoding tricks like `@` don’t even get a chance.
 
-### More Trial, More Error
+## More Trial, More Error
 
 The @ was blocked so what came into my mind is encoding, **Here**: 
 
@@ -166,7 +166,7 @@ Risk score 0.01? It let it through! Classifier must’ve snoozed.
 
 <img src="https://i.ibb.co/QzxrVRZ/Who-Decidedpng.png" alt="Who-Decidedpng" border="0">
 
-<h1>Challenge</h1>
+# Challenge
 
 Back to the CTF. First shot malicious email:
 
@@ -176,7 +176,7 @@ The second email I sent looked like it worked. it should have sent an email to c
 
 <img src="https://i.ibb.co/XPyyHYp/3.png" alt="3" border="0">
 
-<h2>Solution</h2>
+## Solution
 
 I tried to use encoding but didn’t work, there is two reasons came into my mind:
 
@@ -193,6 +193,6 @@ When my trick failed, I explored another approaches and one of them is “floodi
 - If a model **prioritizes recent tokens**, flooding with redundant text could push malicious content into a low-priority area.
 - Some models **treat excessive repetition as noise**, leading to unintended behavior.
 
-<h1>Conclusion</h1>
+# Conclusion
 
 This experiment highlighted the **limitations of LLM-based defenses** and how attackers can manipulate summarization systems to evade detection.
