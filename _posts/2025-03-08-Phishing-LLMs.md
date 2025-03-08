@@ -190,7 +190,7 @@ When my trick failed, I explored another approaches and one of them is “floodi
 
 <h2>Why Flooding Worked</h2>
 
-- Many LLMs **truncate inputs at a fixed token limit**, so security filters may have only checked the beginning of the input.
+- Many Classifiers **truncate inputs at a fixed token limit**, so security filters may have only checked the beginning of the input.
 - If a model **prioritizes recent tokens**, flooding with redundant text could push malicious content into a low-priority area.
 - Some models **treat excessive repetition as noise**, leading to unintended behavior.
 
