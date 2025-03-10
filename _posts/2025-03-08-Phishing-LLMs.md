@@ -24,7 +24,7 @@ Most hacking relies on trial and error to understand what happens behind the sce
 
 To start, I sent a **normal email** to observe how the system processes and summarizes my message:
 
->DISCLIMER: This debugging is a simulation to understand what happens in the background but Prompt_Shield doesn't offer that feature. 
+>DISCLAIMER: This debugging is a simulation to understand what happens in the background but Prompt_Shield doesn't offer that feature. 
 
 ```bash
 Hello Team,
@@ -105,7 +105,6 @@ That `@` tripped the alarm. Game on.
 LLM apps lean on classifiers to detect and block prompt injections. input and output stages. Think of it as the bouncer checking your ID. **Here’s how it thinks**:
 
 > Classifier: An algorithm used to categorize threats for handling.
-> 
 
 | Category | Example Trigger Words/Phrases | Risk Level | System Response |
 | --- | --- | --- | --- |
@@ -179,7 +178,7 @@ The second email I sent looked like it worked. it should have sent an email to c
 
 <h2>Solution</h2>
 
-I tried to use encoding but didn’t work, there is two reasons came into my mind:
+I tried to use encoding but didn’t work, there are two possible scenarios that came to mind:
 
 - The security system likely **normalizes input before classification**, meaning encoded characters like `&#64;` are converted back to `@` before filtering.
 - Some systems employ **regular expressions with pre-processing steps**, allowing them to detect hidden patterns despite encoding attempts.
