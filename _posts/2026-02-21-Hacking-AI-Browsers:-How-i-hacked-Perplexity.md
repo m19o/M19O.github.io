@@ -106,7 +106,7 @@ and someone hides a malicious prompt inside it. If the summary output can be con
 The user reads the summary, trusts it, and makes a decision based on it.
 
 <p align="center">
-  <img src="/assets/img/posts/ai-browser-summarizer-bugs/capisce.png" width="700" />
+  <img src="/assets/img/posts/ai-browser-summarizer-bugs/capisce.png" width="700" alt="Capisce!"/>
 </p>
 If you don’t consider this impact… it’s ok.
 
@@ -153,7 +153,7 @@ A page can programmatically manipulate selection/highlighting behavior so that s
 ```
 That's "**easy mode.**" The real world version is uglier (and stealthier).
 <p align="center">
-  <img src="/assets/img/posts/ai-browser-summarizer-bugs/stop-clicking.png" width="1000" />
+  <img src="/assets/img/posts/ai-browser-summarizer-bugs/stop-clicking.png" width="1000" alt="Stop clicking!"/>
 </p>
 
 ## Target #2: Perplexity Chat 
