@@ -13,8 +13,8 @@ media_subpath: /assets/img/posts/ai-browser-summarizer-bugs/
 
 In this blog, I’ll walk through a few vulnerabilities I found while testing **Perplexity’s Comet** and **Chat:** 
 
-1. **Summary template injection** (Comet): I influenced the summarizer’s “visible content” field to manipulate the output.
-2. **Highlight/selection injection** (Comet): I showed that highlighted text can leak into the summary context/output.
+1. **Summary template injection** (**Comet**): I influenced the summarizer’s “visible content” field to manipulate the output.
+2. **Highlight/selection injection** (**Comet**): I showed that highlighted text can leak into the summary context/output.
 3. **Image-based chat exfiltration** (**Chat**): I confirmed outbound requests triggered via model output patterns.
 
 # Journey into hacking AI (and why summarizers keep betraying us)
