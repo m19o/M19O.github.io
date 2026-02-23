@@ -1,5 +1,5 @@
 ---
-title: "Journey into hacking AI (and why summarizers keep betraying us)"
+title: "Hacking AI Browsers: How i hacked Perplexity"
 date: 2026-02-03 00:00:00 +0200
 categories: [Research, LLM]
 tags: [ai, llm, ai-security, browser-security, perplexity, comet, summarization, prompt-injection, indirect-prompting, data-exfiltration]
