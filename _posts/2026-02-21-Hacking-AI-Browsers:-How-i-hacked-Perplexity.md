@@ -6,7 +6,7 @@ tags: [ai, llm, ai-security, browser-security, perplexity, comet, summarization,
 description: "Hacking AI Browsers."
 image:
   path: /assets/img/posts/ai-browser-summarizer-bugs/cover-1200x630.png
-  alt: "AI browser summarization security research; Comet + Perplexity"
+  alt: "AI browser security research"
 media_subpath: /assets/img/posts/ai-browser-summarizer-bugs/
 ---
 **TL;DR**
