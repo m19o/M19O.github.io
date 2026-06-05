@@ -8,6 +8,7 @@ image:
   path: /assets/img/posts/Meta-AI-Agent-Account-Takeover/3df9f9e4-ee6d-4e4b-b79e-4be2f4d9de7e.jpg
   alt: "AI agent authorization and account takeover research"
 media_subpath: /assets/img/posts/Meta-AI-Agent-Account-Takeover/
+mermaid: true
 ---
 
 # Introduction
