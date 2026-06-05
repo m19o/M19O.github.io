@@ -265,7 +265,7 @@ Designing an Agent is no different than designing a traditional service except t
 
 <div style="width:100%; max-height:720px; overflow:auto; border:1px solid #30363d; border-radius:12px; padding:12px;">
   <a href="maze-design.svg" target="_blank">
-    <img src="maze-design.svg" alt="Maze Design" style="max-width:none; width:1400px;">
+    <img src="/assets/img/posts/Meta-AI-Agent-Account-Takeover/maze-design.svg" alt="Maze Design" style="max-width:none; width:1400px;">
   </a>
 </div>
 
