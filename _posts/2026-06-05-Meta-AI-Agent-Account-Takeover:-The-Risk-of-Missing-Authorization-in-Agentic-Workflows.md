@@ -264,44 +264,63 @@ There is also a parameter confusion risk. The policy may check ownership against
 Designing an Agent is no different than designing a traditional service except that adding AI to the workflow increases the attack surface, LLMs cannot be trusted to achieve the designated goal. to be able to control LLMs you need to use what i call Maze design. When you give an agent capabilities without enforcing any policies, at a certain point it will act upon what it reasons. 
 
 ```mermaid
-flowchart RL
-    AGENT["AI Agent - Requests: change_email"] --> G1{"GATE 1 - Intent Classification - Is this a privileged action?"}
+flowchart TD
+    A["AI Agent<br/>Requests: change_email"] --> B{"GATE 1<br/>Is this a privileged action?"}
 
-    G1 -->|No: Safe action| SAFE["Execute directly - Read-only, no mutation"]
-    G1 -->|Yes: Privileged| G2{"GATE 2 - Identity Verification - Does user own this account?"}
+    B -->|No| C["Safe Path<br/>Read-only / low-risk action"]
+    C --> D["Execute with normal authorization"]
 
-    G2 -->|Cannot determine| REJECT1["Blocked - Cannot verify ownership"]
-    G2 -->|Not verified| CHALLENGE["Verification challenge sent to account owner email"]
-    G2 -->|Verified owner| G3{"GATE 3 - Capability Scope - Can this tool mutate data?"}
+    B -->|Yes| E["Locked Path"]
 
-    CHALLENGE --> USER{"User submits token from email"}
-    USER -->|Token invalid or expired| REJECT2["Blocked - Invalid or expired token"]
-    USER -->|Token valid| G3
+    E --> F{"GATE 2<br/>Is the user authenticated?"}
+    F -->|No| X1["Blocked<br/>Unauthenticated request"]
 
-    G3 -->|Read-only| PASS3["Execute - Safe operation"]
-    G3 -->|Mutation| G4{"GATE 4 - Policy Engine - Is this action allowed for this user and context?"}
+    F -->|Yes| G{"GATE 3<br/>Does the user own the target account?"}
+    G -->|No| X2["Blocked<br/>Ownership check failed"]
 
-    G4 -->|Policy denies| REJECT3["Blocked - Policy violation"]
-    G4 -->|Policy allows| G5{"GATE 5 - Rate Limit - Is this request within bounds?"}
+    G -->|Yes| H{"GATE 4<br/>Can this tool mutate sensitive data?"}
+    H -->|No| C
 
-    G5 -->|Rate exceeded| REJECT4["Blocked - Rate limit exceeded"]
-    G5 -->|Within bounds| EXECUTE["Action executed - Audit log written"]
+    H -->|Yes| I{"GATE 5<br/>Does policy allow this action?"}
+    I -->|No| X3["Blocked<br/>Policy violation"]
 
-    style AGENT fill:#4488ff,color:#fff
-    style G1 fill:#ff8800,color:#fff
-    style G2 fill:#ff8800,color:#fff
-    style G3 fill:#ff8800,color:#fff
-    style G4 fill:#ff8800,color:#fff
-    style G5 fill:#ff8800,color:#fff
-    style SAFE fill:#44aa44,color:#fff
-    style PASS3 fill:#44aa44,color:#fff
-    style EXECUTE fill:#44aa44,color:#fff
-    style CHALLENGE fill:#ffcc00,color:#000
-    style USER fill:#4488ff,color:#fff
-    style REJECT1 fill:#ff4444,color:#fff
-    style REJECT2 fill:#ff4444,color:#fff
-    style REJECT3 fill:#ff4444,color:#fff
-    style REJECT4 fill:#ff4444,color:#fff
+    I -->|Yes| J{"GATE 6<br/>Rate limit and abuse checks passed?"}
+    J -->|No| X4["Blocked<br/>Abuse controls triggered"]
+
+    J -->|Yes| K["Step-up verification<br/>Token / MFA / verified channel"]
+
+    K --> L{"Verification valid?"}
+    L -->|No| X5["Blocked<br/>Invalid or expired verification"]
+
+    L -->|Yes| M["Execute Tool<br/>Action performed"]
+    M --> N["Audit Log<br/>Action recorded"]
+
+    X1 --> N
+    X2 --> N
+    X3 --> N
+    X4 --> N
+    X5 --> N
+
+    style A fill:#4488ff,color:#fff,stroke:#1f4fd6,stroke-width:2px
+    style B fill:#ff8800,color:#fff,stroke:#b85f00,stroke-width:2px
+    style C fill:#44aa44,color:#fff,stroke:#267326,stroke-width:2px
+    style D fill:#44aa44,color:#fff,stroke:#267326,stroke-width:2px
+    style E fill:#222,color:#fff,stroke:#777,stroke-width:2px
+    style F fill:#ff8800,color:#fff,stroke:#b85f00,stroke-width:2px
+    style G fill:#ff8800,color:#fff,stroke:#b85f00,stroke-width:2px
+    style H fill:#ff8800,color:#fff,stroke:#b85f00,stroke-width:2px
+    style I fill:#ff8800,color:#fff,stroke:#b85f00,stroke-width:2px
+    style J fill:#ff8800,color:#fff,stroke:#b85f00,stroke-width:2px
+    style K fill:#ffcc00,color:#000,stroke:#a88600,stroke-width:2px
+    style L fill:#ff8800,color:#fff,stroke:#b85f00,stroke-width:2px
+    style M fill:#44aa44,color:#fff,stroke:#267326,stroke-width:2px
+    style N fill:#666,color:#fff,stroke:#333,stroke-width:2px
+
+    style X1 fill:#ff4444,color:#fff,stroke:#a60000,stroke-width:2px
+    style X2 fill:#ff4444,color:#fff,stroke:#a60000,stroke-width:2px
+    style X3 fill:#ff4444,color:#fff,stroke:#a60000,stroke-width:2px
+    style X4 fill:#ff4444,color:#fff,stroke:#a60000,stroke-width:2px
+    style X5 fill:#ff4444,color:#fff,stroke:#a60000,stroke-width:2px
 ```
 
 Maze is a design pattern for forcing the agent into controlled execution paths.
