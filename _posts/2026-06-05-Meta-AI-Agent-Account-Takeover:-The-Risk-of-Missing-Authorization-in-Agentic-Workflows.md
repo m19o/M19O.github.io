@@ -247,15 +247,15 @@ sequenceDiagram
     
 ```
 
-This design is cleaner because it keeps authorization centralized. You are not relying on prompts, agent reasoning, or individual tool implementations to decide what is safe. The agent becomes an inte[...]
+This design is cleaner because it keeps authorization centralized. You are not relying on prompts, agent reasoning, or individual tool implementations to decide what is safe. The agent becomes an interface. The policy engine becomes the authority.
 
 #### How this design can still be abused
 
 This is the strongest of the three designs, but it can still fail if the policy layer is incomplete, misconfigured, or placed in the wrong order.
 
-For example, if the policy creates a pending action or sends a verification email before checking account ownership, an attacker may still be able to trigger security emails for accounts they do not o[...]
+For example, if the policy creates a pending action or sends a verification email before checking account ownership, an attacker may still be able to trigger security emails for accounts they do not own.
 
-Another issue is policy misclassification. If a sensitive tool is accidentally marked as safe for automatic execution, the agent may get a direct path to an action that should have required verificati[...]
+Another issue is policy misclassification. If a sensitive tool is accidentally marked as safe for automatic execution, the agent may get a direct path to an action that should have required verification.
 
 There is also a parameter confusion risk. The policy may check ownership against one parameter, while the underlying tool executes against another. For example, the policy may verify `username`, but the tool may use `account_id` or `target_user` internally. In that case, the policy check may pass while the tool acts on a different resource.
 
@@ -288,18 +288,18 @@ When I assess an agentic workflow, I start by asking where the agent is allowed 
 - Can it send verification emails before ownership is checked?
 - Can it bypass the normal application workflow because the request came through the agent?
 
-A lot of teams treat the agent like a smart interface, but then accidentally give it backend power. So the agent is no longer just answering questions. It is making things happen. And if the tool behi[...]
+A lot of teams treat the agent like a smart interface, but then accidentally give it backend power. So the agent is no longer just answering questions. It is making things happen. And if the tool behind it does not check ownership, the agent becomes a very polite way to hit a broken access control bug.
 
-The real impact usually comes from what sits behind the prompt. If the agent gets tricked and nothing sensitive happens, the impact is limited. If the agent gets tricked and can touch account recovery[...]
+The real impact usually comes from what sits behind the prompt. If the agent gets tricked and nothing sensitive happens, the impact is limited. If the agent gets tricked and can touch account recovery, identity settings, payments, roles, or internal workflows, then the prompt becomes the entry point into something much bigger.
 
 # **Final thoughts**
 
 What brought us here is the rush to adopt new technology without understanding the new attack surface it creates.
 
-Organizations are adding LLMs and agents to production workflows because of FOMO. The problem is that many of these systems are being connected to sensitive actions before teams understand how they ca[...]
+Organizations are adding LLMs and agents to production workflows because of FOMO. The problem is that many of these systems are being connected to sensitive actions before teams understand how they can be abused, where the trust boundaries are, and what security controls should exist around them. This is not a completely new problem. It is the same old identity and access management problem, but now it is happening with agents, tools, and non-human identities.
 
-We already struggle with service accounts, API keys, OAuth tokens, overprivileged integrations, and broken access control. Agents add another layer to this problem because they can reason over user in[...]
+We already struggle with service accounts, API keys, OAuth tokens, overprivileged integrations, and broken access control. Agents add another layer to this problem because they can reason over user input and take actions through tools. That combination is dangerous when the authorization model is weak.
 
-The industry keeps selling AI as something that solves problems, but we also need to talk honestly about the problems AI creates. If we keep connecting agents to privileged workflows without locked ex[...]
+The industry keeps selling AI as something that solves problems, but we also need to talk honestly about the problems AI creates. If we keep connecting agents to privileged workflows without locked execution paths, we will keep seeing the same class of bugs in a new shape.
 
 What we have seen so far is only the beginning.
