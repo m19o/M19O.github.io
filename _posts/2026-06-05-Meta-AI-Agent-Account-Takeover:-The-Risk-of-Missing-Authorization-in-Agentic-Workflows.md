@@ -110,15 +110,15 @@ The key idea here is that the agent never handles secrets and never performs the
 ```mermaid
 sequenceDiagram
     participant U as User
-    participant AI as Meta AI Chat
-    participant App as Application /auth/forgot-password
+    participant AI as AI Agent
+    participant T as Tool: change_email
 
-    U->>AI: Change my email for @obama_whitehouse
-    AI-->>U: I can't do that directly. Let me start the verification process for you.
-    AI->>App: POST /auth/forgot-password {email: "whitehouse@obama.org"}
-    App-->>U: Token sent to verified email (AI never sees it)
-    U->>App: POST /auth/reset-password {token, new_password}
-    App-->>U: Password reset complete
+    U->>AI: Change my email
+    AI->>T: change_email(username, new_email, auth_token=None)
+    T-->>U: Token sent to verified email
+    U->>T: change_email(username, new_email, auth_token=REAL_TOKEN)
+    T-->>U: Email updated
+    Note over AI: Agent never sees auth_token
 ```
 
 This reduces the agent’s authority. The agent is no longer able to directly mutate the account. It only routes the user to a verified recovery or confirmation flow. 
@@ -165,7 +165,7 @@ def ai_support_chat(message: str) -> str:
 The important point is that calling the tool without a valid token does not update the email. It only sends a verification request. The mutation happens only after the valid token is provided.
 
 ```mermaid
-**sequenceDiagram
+sequenceDiagram
     participant U as User
     participant AI as AI Agent
     participant T as Tool: change_email
