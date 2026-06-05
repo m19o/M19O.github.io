@@ -263,19 +263,60 @@ There is also a parameter confusion risk. The policy may check ownership against
 
 Designing an Agent is no different than designing a traditional service except that adding AI to the workflow increases the attack surface, LLMs cannot be trusted to achieve the designated goal. to be able to control LLMs you need to use what i call Maze design. When you give an agent capabilities without enforcing any policies, at a certain point it will act upon what it reasons.
 
-<div style="width:100%; height:720px; border:1px solid #30363d; border-radius:12px; overflow:hidden;">
-  <iframe
-    src="/assets/img/posts/Meta-AI-Agent-Account-Takeover/maze-design.svg"
-    title="Maze Design"
-    style="width:100%; height:100%; border:0; background:#0d1117;">
-  </iframe>
-</div>
+```mermaid
+flowchart TD
+    AGENT["AI Agent<br/>Requests: change_email"] --> G1{"GATE 1<br/>Privileged action?"}
 
-<p>
-  <a href="/assets/img/posts/Meta-AI-Agent-Account-Takeover/maze-design.svg" target="_blank" rel="noopener">
-    Open Maze Design in full size
-  </a>
-</p>
+    G1 -->|No| SAFE["Safe Path<br/>Read-only / low-risk"]
+    SAFE --> EXEC_SAFE["Execute<br/>Normal authorization"]
+
+    G1 -->|Yes| LOCKED["Locked Path<br/>No direct execution"]
+
+    LOCKED --> G2{"GATE 2<br/>User authenticated?"}
+    G2 -->|No| BLOCK1["Blocked<br/>Unauthenticated request"]
+
+    G2 -->|Yes| G3{"GATE 3<br/>Owns target account?"}
+    G3 -->|No| BLOCK2["Blocked<br/>Ownership failed"]
+
+    G3 -->|Yes| G4{"GATE 4<br/>Tool can mutate data?"}
+    G4 -->|No| SAFE
+
+    G4 -->|Yes| G5{"GATE 5<br/>Policy allows action?"}
+    G5 -->|No| BLOCK3["Blocked<br/>Policy violation"]
+
+    G5 -->|Yes| G6{"GATE 6<br/>Rate limit passed?"}
+    G6 -->|No| BLOCK4["Blocked<br/>Abuse detected"]
+
+    G6 -->|Yes| STEPUP["Step-up Verification<br/>Token / MFA / verified channel"]
+    STEPUP --> G7{"GATE 7<br/>Verification valid?"}
+
+    G7 -->|No| BLOCK5["Blocked<br/>Invalid verification"]
+    G7 -->|Yes| EXECUTE["Execute Tool<br/>Action performed"]
+
+    EXECUTE --> AUDIT["Audit Log<br/>Action recorded"]
+    EXEC_SAFE --> AUDIT
+    BLOCK1 --> AUDIT
+    BLOCK2 --> AUDIT
+    BLOCK3 --> AUDIT
+    BLOCK4 --> AUDIT
+    BLOCK5 --> AUDIT
+
+    classDef agent fill:#4488ff,color:#fff,stroke:#1f4fd6,stroke-width:2px
+    classDef gate fill:#ff8800,color:#fff,stroke:#b85f00,stroke-width:2px
+    classDef safe fill:#44aa44,color:#fff,stroke:#267326,stroke-width:2px
+    classDef locked fill:#222,color:#fff,stroke:#777,stroke-width:2px
+    classDef stepup fill:#ffcc00,color:#000,stroke:#a88600,stroke-width:2px
+    classDef block fill:#ff4444,color:#fff,stroke:#a60000,stroke-width:2px
+    classDef audit fill:#666,color:#fff,stroke:#333,stroke-width:2px
+
+    class AGENT agent
+    class G1,G2,G3,G4,G5,G6,G7 gate
+    class SAFE,EXEC_SAFE,EXECUTE safe
+    class LOCKED locked
+    class STEPUP stepup
+    class BLOCK1,BLOCK2,BLOCK3,BLOCK4,BLOCK5 block
+    class AUDIT audit
+```
 
 **Key Gates in the Maze Design:**
 
