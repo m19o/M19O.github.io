@@ -263,7 +263,19 @@ There is also a parameter confusion risk. The policy may check ownership against
 
 Designing an Agent is no different than designing a traditional service except that adding AI to the workflow increases the attack surface, LLMs cannot be trusted to achieve the designated goal. to be able to control LLMs you need to use what i call Maze design. When you give an agent capabilities without enforcing any policies, at a certain point it will act upon what it reasons.
 
-![Maze Design](/assets/img/posts/Meta-AI-Agent-Account-Takeover/maze-design.svg){: width="1400" .normal }
+<div style="width:100%; height:720px; border:1px solid #30363d; border-radius:12px; overflow:hidden;">
+  <iframe
+    src="/assets/img/posts/Meta-AI-Agent-Account-Takeover/maze-design.svg"
+    title="Maze Design"
+    style="width:100%; height:100%; border:0; background:#0d1117;">
+  </iframe>
+</div>
+
+<p>
+  <a href="/assets/img/posts/Meta-AI-Agent-Account-Takeover/maze-design.svg" target="_blank" rel="noopener">
+    Open Maze Design in full size
+  </a>
+</p>
 
 **Key Gates in the Maze Design:**
 
