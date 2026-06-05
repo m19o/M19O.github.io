@@ -176,7 +176,7 @@ sequenceDiagram
     T-->>U: Token sent to verified email
     U->>T: change_email(username, new_email, auth_token=REAL_TOKEN)
     T-->>U: Email updated
-    Note over AI: Agent never sees auth_token**
+    Note over AI: Agent never sees auth_token
 ```
 
 This design is better than allowing the agent to execute privileged actions directly. The tool becomes responsible for enforcing the security boundary. Even if the agent is manipulated, the tool will [...]
