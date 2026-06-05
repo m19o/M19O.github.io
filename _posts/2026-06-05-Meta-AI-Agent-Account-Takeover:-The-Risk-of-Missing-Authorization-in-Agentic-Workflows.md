@@ -219,7 +219,7 @@ def execute_tool(user: str, tool: str, params: dict) -> str:
             return "You can only modify your own account."
 
     # Safe action — execute directly
-    return TOOLStool
+    return TOOLS[tool](**params)
 
 def ai_support_chat(message: str) -> str:
     intent = classify_intent(message)
